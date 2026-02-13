@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(158, 127, 255, 0.3) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(158, 127, 255, 0.3);
+  border-radius: 3px;
+}
+
+body {
+  background-color: #0a0a0f;
+  color: #ffffff;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.glass {
+  background: rgba(18, 18, 26, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(158, 127, 255, 0.1);
+}
+
+.glass-light {
+  background: rgba(26, 26, 37, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(158, 127, 255, 0.08);
+}
+
+.gradient-border {
+  position: relative;
+  background: linear-gradient(135deg, rgba(158, 127, 255, 0.1), rgba(56, 189, 248, 0.1));
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(158, 127, 255, 0.5), rgba(56, 189, 248, 0.5));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #9E7FFF, #38bdf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.btn-primary {
+  @apply px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 hover:scale-105 active:scale-95;
+}
+
+.btn-secondary {
+  @apply px-6 py-3 bg-surface-light border border-border text-white font-medium rounded-xl transition-all duration-300 hover:border-primary/50 hover:bg-surface;
+}
+
+.card {
+  @apply bg-surface/80 backdrop-blur-xl border border-border rounded-2xl p-6 transition-all duration-300 hover:border-primary/30;
+}
+
+.input {
+  @apply w-full px-4 py-3 bg-surface-light border border-border rounded-xl text-white placeholder-text-secondary/50 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all duration-300;
+}
+
+.label {
+  @apply block text-sm font-medium text-text-secondary mb-2;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
